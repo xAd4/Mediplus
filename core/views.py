@@ -18,7 +18,3 @@ class BlogTemplateView(TemplateView):
 # Contact Page
 class ContactTemplateView(TemplateView):
     template_name = "core/contact.html"
-
-# Error 404 Page
-class ErrorTemplateView(TemplateView):
-    template_name = "core/404.html"
