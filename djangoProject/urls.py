@@ -27,6 +27,8 @@ from appointments import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # DJANGO REGISTRATION URL
+    path("accounts/", include("django.contrib.auth.urls")),
     # CORE VIEWS
     path("", include("core.urls")),
     # CORE API VIEWS,
