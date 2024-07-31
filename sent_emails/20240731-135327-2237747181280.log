@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: gabrielcardozo3579@gmail.com
+Date: Wed, 31 Jul 2024 17:53:27 -0000
+Message-ID: <172244840702.15492.7512619352629121277@DESKTOP-C4S86O3>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/MQ/cb17x2-ee59a14f1b530e0a88c678d9079cc5ac/
+
+Your username, in case you’ve forgotten: angelestarita
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
