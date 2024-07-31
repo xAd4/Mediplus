@@ -1,0 +1,25 @@
+<form class="form" action="#" method="post">
+    {% csrf_token %}
+    <div class="form-fields">
+        {% for field in form %}
+            <div class="form-group">
+                {% if field.errors %}
+                    <div class="alert alert-danger">{{ field.errors }}</div>
+                {% endif %}
+                <!-- Renderiza el campo sin el label -->
+                {{ field }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-md-4 col-12">
+            <div class="form-group">
+                <div class="button">
+                    <button type="submit" class="btn mt-2">Book An Appointment</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-8 col-12">
+        </div>
+    </div>
+</form>
