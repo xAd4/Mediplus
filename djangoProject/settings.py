@@ -81,10 +81,14 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+ 'default': {
+ 'ENGINE': 'django.db.backends.mysql',
+ 'NAME': 'mi_base_de_datos', # Nombre de tu base de datos
+ 'USER': 'angelestarita', # Nombre de usuario de la base de datos
+ 'PASSWORD': '3579', # Contraseña del usuario de la base de datos
+ 'HOST': 'localhost', # El host donde corre tu base de datos
+ 'PORT': '3306', # Puerto de MySQL (por defecto es 3306)
+ }
 }
 
 
@@ -132,8 +136,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+
 
 # Emails
 if DEBUG:

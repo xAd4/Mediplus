@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -23,12 +24,13 @@ class DepartmentAppointment(models.Model):
     phone_patient = models.CharField(max_length=15, verbose_name="Phone of patient")
     department = models.ForeignKey(DepartmentList, on_delete=models.CASCADE, null=False, verbose_name="Department List")
     content = models.CharField(max_length=600, verbose_name="Reason for appointment")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date created")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date updated")
 
     class Meta:
         verbose_name = "Appointment"
-        verbose_name_plural = "Appointments"
+        verbose_name_plural = "Appointments"                    
 
     def __str__(self):
         return self.name_patient
