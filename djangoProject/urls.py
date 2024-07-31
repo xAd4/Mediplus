@@ -22,6 +22,8 @@ from djangoProject import settings
 from core import urls
 # Core API Views Import
 from core import urls_routers
+# Appointments Views Import
+from appointments import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,8 @@ urlpatterns = [
     path("", include("core.urls")),
     # CORE API VIEWS,
     path("api-auth/", include("core.urls_routers")),
+    # Appointments Views Import
+    path("medical/appointments/", include("appointments.urls")),
 ]
 
 if settings.DEBUG:
