@@ -35,23 +35,29 @@ This is a Django-based web application that allows users to book medical appoint
    ```sh
    git clone 
    cd medical-appointment-blog-website
-
-python3 -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
 Install the required packages:
-pip install django
-pip install djangorestframework
+ ```sh
+   pip install django
+   pip install djangorestframework
+```
 
 Set up the database:
-python manage.py makemigrations
-python manage.py migrate
-
+```sh
+   python manage.py makemigrations
+   python manage.py migrate
+```
 Create a superuser:
-python manage.py createsuperuser
+```sh
+   python manage.py createsuperuser
+```
 
 Run the development server:
+```sh
 python manage.py runserver
+```
 Open your browser and navigate to http://localhost:8000 to view the website.
 
 # License
