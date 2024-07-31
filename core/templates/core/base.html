@@ -88,25 +88,32 @@
 											<li class="{% if request.path == '/portfolio/' %}active{% endif %}"><a href="{% url 'portfolio' %}">Portfolio </a></li>
 											<li class="{% if request.path == '/blog/' %}active{% endif %}"><a href="{% url 'blog' %}">Blog </a></li>
 											<li class="{% if request.path == '/contact/' %}active{% endif %}"><a href="{% url 'contact' %}">Contact <i></i></a></li>
-                                           {% if request.user.is_staff %}
-                                               <li class=""><a href="#">Administrator<i class="icofont-rounded-down"></i></a>
-												<ul class="dropdown">
-													<li><a href="{% url 'medical-appointments' %}">Medical Appointments</a></li>
-                                                    <li><a href="#">Messages</a></li>
-												</ul>
-											</li>
-                                           {% endif %}
-										   {% if not request.user.is_authenticated %}
-										   <li class=""><a href="#">Authentication<i class="icofont-rounded-down"></i></a>
-											<ul class="dropdown">
-												<li><a href="{% url 'login' %}">Log In</a></li>
-												<li><a href="#">Sign Up</a></li>
-											</ul>
-										   {% else %}
-										   <li><a href="{% url 'logout' %}"> Log Out <i></i></a></li>
-										   {% endif %}
+											{% if request.user.is_staff %}
+												<li class=""><a href="#">Administrator<i class="icofont-rounded-down"></i></a>
+													<ul class="dropdown">
+														<li><a href="{% url 'medical-appointments' %}">Medical Appointments</a></li>
+														<li><a href="#">Messages</a></li>
+													</ul>
+												</li>
+											{% endif %}
+											{% if not request.user.is_authenticated %}
+												<li class=""><a href="#">Authentication<i class="icofont-rounded-down"></i></a>
+													<ul class="dropdown">
+														<li><a href="{% url 'login' %}">Log In</a></li>
+														<li><a href="#">Sign Up</a></li>
+													</ul>
+												</li>
+											{% else %}
+												<li>
+													<a href="#" onclick="document.getElementById('logout-form').submit();">Log Out <i></i></a>
+													<form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+														{% csrf_token %}
+													</form>
+												</li>
+											{% endif %}
 										</ul>
 									</nav>
+									
 								</div>
 								<!--/ End Main Menu -->
 							</div>
