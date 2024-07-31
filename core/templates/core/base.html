@@ -84,11 +84,10 @@
 								<div class="main-menu">
 									<nav class="navigation">
 										<ul class="nav menu">
-											<li class="active"><a href="{% url 'home' %}">Home <i></i></a>
-											</li>
-											<li><a href="{% url 'portfolio' %}">Portfolio </a></li>
-											<li><a href="{% url 'blog' %}">Blog </a></li>
-											<li><a href="{% url 'contact' %}">Contact <i></i></a>
+											<li class="{% if request.path == "/" %}active{% endif %}"><a href="{% url 'home' %}">Home <i></i></a></li>
+											<li class="{% if request.path == "/portfolio/" %}active{% endif %}"><a href="{% url 'portfolio' %}">Portfolio </a></li>
+											<li class="{% if request.path == "/blog/" %}active{% endif %}"><a href="{% url 'blog' %}">Blog </a></li>
+											<li class="{% if request.path == "/contact/" %}active{% endif %}"><a href="{% url 'contact' %}">Contact <i></i></a>
 
 											</li>
 										</ul>
