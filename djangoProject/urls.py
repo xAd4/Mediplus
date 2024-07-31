@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from djangoProject import settings
 # Core Views Import
 from core import urls
 
@@ -24,3 +26,7 @@ urlpatterns = [
     # CORE VIEWS
     path("", include("core.urls")),
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
