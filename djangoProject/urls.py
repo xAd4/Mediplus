@@ -20,11 +20,15 @@ from django.conf import settings
 from djangoProject import settings
 # Core Views Import
 from core import urls
+# Core API Views Import
+from core import urls_routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # CORE VIEWS
     path("", include("core.urls")),
+    # CORE API VIEWS,
+    path("api-auth/", include("core.urls_routers")),
 ]
 
 if settings.DEBUG:
