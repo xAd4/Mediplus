@@ -7,4 +7,5 @@ urlpatterns = [
     path('portfolio/', views.PortfolioTemplateView.as_view(), name="portfolio"),
     path('blog/', views.BlogTemplateView.as_view(), name="blog"),
     path('contact/', views.ContactTemplateView.as_view(), name="contact"),
+    path("post_200_ok/", views.PostOKTemplateView.as_view(), name="post-200-ok"),
 ]

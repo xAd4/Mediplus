@@ -1,6 +1,4 @@
 from django import template
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 from core.forms import DepartmentAppointmentForm
 
 register = template.Library()

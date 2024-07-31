@@ -18,7 +18,7 @@ class HomeTemplateView(TemplateView):
         form = DepartmentAppointmentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirige a la misma página después de guardar
+            return redirect('post-200-ok')  # Redirige a la misma página después de guardar
         return self.get(request, *args, **kwargs, form=form)
 
 # Portfolio and Projects Page
@@ -32,3 +32,6 @@ class BlogTemplateView(TemplateView):
 # Contact Page
 class ContactTemplateView(TemplateView):
     template_name = "core/contact.html"
+
+class PostOKTemplateView(TemplateView):
+    template_name = "core/post_200_ok.html"
