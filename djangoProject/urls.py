@@ -38,7 +38,7 @@ urlpatterns = [
     # CORE API VIEWS,
     path("api-auth/", include("core.urls_routers")),
     # Appointments Views Import
-    path("medical/appointments/", include("appointments.urls")),
+    path("medical/", include("appointments.urls")),
     # Registration Views Import
     path("accounts/", include("registration.urls")),
     # Contact Views Import
