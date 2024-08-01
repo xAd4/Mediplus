@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'appointments',
     'forms',
     'contact',
+    'content',
+    'helpers',
 ]
 
 MIDDLEWARE = [
