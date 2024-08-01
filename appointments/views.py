@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, DeleteView
 from core.models import DepartmentAppointment
+from contact.models import ContactMessages
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse_lazy
@@ -28,3 +29,21 @@ class MedicalAppointmentDeleteView(DeleteView):
     model = DepartmentAppointment
     template_name = "forms/default_form_delete.html"
     success_url = reverse_lazy("medical-appointments")
+
+# MESSAGES
+
+class ContactMessagesListView(ListView):
+    model = ContactMessages
+    template_name = "appointments/messages.html"
+
+class ContactMessagesDetailView(DetailView):
+    model = ContactMessages
+    template_name = "appointments/messages_detail.html"   
+
+# Delete Medical Appointment
+
+@method_decorator(staff_member_required, name="dispatch")
+class ContactMessagesDeleteView(DeleteView):
+    model = ContactMessages
+    template_name = "forms/default_form_delete.html"
+    success_url = reverse_lazy("messages")

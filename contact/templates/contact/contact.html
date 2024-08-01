@@ -28,7 +28,7 @@
 						<div class="col-lg-6">
 							<div class="contact-us-left">
 								<!--Start Google-map -->
-								<div id="myMap"></div>
+								<img src="{% static 'core/img/contact-img.png' %}" alt="#" />
 								<!--/End Google-map -->
 							</div>
 						</div>
@@ -37,7 +37,31 @@
 								<h2>Contact With Us</h2>
 								<p>If you have any questions please fell free to contact with us.</p>
 								<!-- Form -->
+								{% if request.user.is_authenticated %}
 								{% load form_messages %} {% show_messages_form %}
+								{% else %}
+								<section class="error-page section">
+									<div class="container">
+									  <div class="row">
+										<div class="col-lg-6 offset-lg-3 col-12">
+										  <!-- Error Inner -->
+										  <div class="error-inner">
+											<h1>
+											  404<span
+												>Oop's you can't send messages. You need log in</span
+											  >
+											</h1>
+											<p>
+											  Please, login for send messages.
+											</p>
+											<button type="submit" class="btn"><a href="{% url 'login' %}">Log In</a></button>
+										  </div>
+										  <!--/ End Error Inner -->
+										</div>
+									  </div>
+									</div>
+								  </section>																
+								{% endif %}
 								<!--/ End Form -->
 							</div>
 						</div>

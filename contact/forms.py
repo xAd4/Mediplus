@@ -10,5 +10,5 @@ class ContactMessagesForm(forms.ModelForm):
             "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "Email of patient", "style":"text-transform:none;",}),
             "phone": forms.TextInput(attrs={"class": "form-control", "placeholder": "Phone of patient", "style":"text-transform:none;",}),
             "subject": forms.TextInput(attrs={"class": "form-control", "placeholder": "Subject of message", "style":"text-transform:none;",}),
-            "content": forms.Textarea(attrs={"class": "form-control", "placeholder": "Reason for message", "style":"text-transform:none;",}),
+            "message": forms.Textarea(attrs={"class": "form-control", "placeholder": "Reason for message", "style":"text-transform:none;",}),
         }
