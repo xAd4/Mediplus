@@ -24,6 +24,8 @@ from core import urls
 from core import urls_routers
 # Appointments Views Import
 from appointments import urls
+# Registration Views Import - Sign Up
+from registration import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,6 +37,8 @@ urlpatterns = [
     path("api-auth/", include("core.urls_routers")),
     # Appointments Views Import
     path("medical/appointments/", include("appointments.urls")),
+    # Registration Views Import
+    path("accounts/", include("registration.urls")),
 ]
 
 if settings.DEBUG:
