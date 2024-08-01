@@ -28,6 +28,8 @@ from appointments import urls
 from registration import urls
 # Contact Views Import
 from contact import urls
+# Blog Views Import
+from blog import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,6 +45,8 @@ urlpatterns = [
     path("accounts/", include("registration.urls")),
     # Contact Views Import
     path("contact/", include("contact.urls")),
+    # Blog Views Import
+    path("blog/", include("blog.urls")),
 ]
 
 if settings.DEBUG:

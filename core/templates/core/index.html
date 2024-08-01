@@ -7,7 +7,7 @@
     <!-- Start Single Slider -->
     <div
       class="single-slider"
-      style="background-image: url('{% static 'core/img/slider2.jpg' %}')"
+      style="background-image: url('{% static 'core/img/slider22.jpg' %}')"
     >
       <div class="container">
         <div class="row">
@@ -33,7 +33,7 @@
     <!-- Start Single Slider -->
     <div
       class="single-slider"
-      style="background-image: url('{% static 'core/img/slider.jpg' %}')"
+      style="background-image: url('{% static 'core/img/slide22r.jpg' %}')"
     >
       <div class="container">
         <div class="row">
@@ -49,7 +49,7 @@
               </p>
               <div class="button">
                 <a href="#arrived" class="btn">Get Appointment</a>
-                <a href="#" class="btn primary">About Us</a>
+                <a href="#about-us" class="btn primary">About Us</a>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
     <!-- Start Single Slider -->
     <div
       class="single-slider"
-      style="background-image: url('{% static 'core/img/slider3.jpg' %}')"
+      style="background-image: url('{% static 'core/img/slider223.jpg' %}')"
     >
       <div class="container">
         <div class="row">
@@ -76,7 +76,7 @@
               </p>
               <div class="button">
                 <a href="#arrived" class="btn">Get Appointment</a>
-                <a href="#" class="btn primary">Contact Now</a>
+                <a href="{% url 'contact' %}" class="btn primary">Contact Now</a>
               </div>
             </div>
           </div>
@@ -107,7 +107,6 @@
                   Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et
                   erat in lacus convallis sodales.
                 </p>
-                <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -126,7 +125,6 @@
                   Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et
                   erat in lacus convallis sodales.
                 </p>
-                <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -146,7 +144,6 @@
                   <li class="day">Saturday <span>9.00-18.30</span></li>
                   <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
                 </ul>
-                <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -278,7 +275,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="section-title">
+        <div class="section-title" id="about-us">
           <h2>We Offer Different Services To Improve Your Health</h2>
           <img src="{% static 'core/img/section-img.png' %}" alt="#" />
           <p>
@@ -555,7 +552,9 @@
                   euismod diam libero, sed dapibus leo laoreet ut. Suspendisse
                   potenti. Phasellus urna lacus
                 </p>
-                <button type="submit" class="btn mt-2"><a href="{% url 'login' %}">Log In</a></button>
+                <button type="submit" class="btn mt-2">
+                  <a href="{% url 'login' %}">Log In</a>
+                </button>
               </div>
               <!--/ End Error Inner -->
             </div>

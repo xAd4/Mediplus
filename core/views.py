@@ -34,9 +34,5 @@ class HomeTemplateView(TemplateView):
 class PortfolioTemplateView(TemplateView):
     template_name = "core/portfolio-details.html"
 
-# Blog Page
-class BlogTemplateView(TemplateView):
-    template_name = "core/blog-single.html"
-
 class PostOKTemplateView(TemplateView):
     template_name = "core/post_200_ok.html"
