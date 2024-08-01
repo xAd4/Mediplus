@@ -29,11 +29,6 @@ class HomeTemplateView(TemplateView):
             return redirect('post-200-ok')
         return self.get(request, *args, **kwargs, form=form)
 
-
-# Portfolio and Projects Page
-class PortfolioTemplateView(TemplateView):
-    template_name = "core/portfolio-details.html"
-
 # Blog Page
 class BlogTemplateView(TemplateView):
     template_name = "core/blog-single.html"
