@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'core',
     'appointments',
     'forms',
+    'blog',
+    'portfolio',
+    'contact',
 ]
 
 MIDDLEWARE = [
