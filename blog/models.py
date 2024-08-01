@@ -45,7 +45,7 @@ class BlogComment(models.Model):
         verbose_name = "Comments"
         
     def __str__(self):
-        return self.user
+        return self.user.username
     
     
 # OPTIMIZATION MEDIA
