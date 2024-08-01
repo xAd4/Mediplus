@@ -143,21 +143,11 @@
 								<div class="comments-form">
 									<h2>Leave Comments</h2>
 									<!-- Contact Form -->
-									<form class="form" method="post" action="">
-										<div class="row">
-											<div class="col-12">
-												<div class="form-group message">
-													<i class="fa fa-pencil"></i>
-													<textarea name="message" rows="7" placeholder="Type Your Message Here" ></textarea>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="form-group button">
-													<button type="submit" class="btn primary"><i class="fa fa-send"></i>Submit Comment</button>
-												</div>
-											</div>
-										</div>
-									</form>
+									{% load form_comments %}
+									<div>Before template tag</div>
+									{% show_comment_form %}
+									<div>After template tag</div>
+
 									<!--/ End Contact Form -->
 								</div>
 							</div>
