@@ -4,6 +4,9 @@ from .forms import BlogCommentForm
 from .models import PostBlog
 
 # Create your views here.
+
+
+# ListView Post
 class BlogTemplateView(ListView):
     template_name = "content/blog-single.html"
     model = PostBlog
