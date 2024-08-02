@@ -28,6 +28,10 @@ from appointments import urls
 from registration import urls
 # Contact Views Import
 from contact import urls
+# Content Blog Views Import
+from content import urls
+# Helpers 202 Views Import
+from helpers import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,6 +47,10 @@ urlpatterns = [
     path("accounts/", include("registration.urls")),
     # Contact Views Import
     path("contact/", include("contact.urls")),
+    # Content Blog Views Import
+    path("content/blog/", include("content.urls")),
+    # Helpers 202 Views Import
+    path("", include("helpers.urls")),
 ]
 
 if settings.DEBUG:
