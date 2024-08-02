@@ -1,0 +1,20 @@
+<form class="form" method="post" action="">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group message">
+                <i class="fa fa-pencil"></i>
+                {% if form %}
+                    {{ form.comment }}
+                {% else %}
+                    <p>No form available</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group button">
+                <button type="submit" class="btn primary"><i class="fa fa-send"></i>Submit Comment</button>
+            </div>
+        </div>
+    </div>
+</form>
