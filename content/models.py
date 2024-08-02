@@ -16,3 +16,15 @@ class BlogComment(models.Model):
         
     def __str__(self):
         return self.user.username
+    
+# Post
+class PostBlog(models.Model):
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    article = models.CharField(max_length=400)
+    comments = models.ForeignKey(BlogComment, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.title

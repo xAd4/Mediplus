@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from .forms import BlogCommentForm
+from .models import PostBlog
 
 # Create your views here.
-class BlogTemplateView(TemplateView):
+class BlogTemplateView(ListView):
     template_name = "content/blog-single.html"
+    model = PostBlog
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
