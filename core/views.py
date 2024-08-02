@@ -29,9 +29,3 @@ class HomeTemplateView(TemplateView):
             return redirect('post-200-ok')
         return self.get(request, *args, **kwargs, form=form)
 
-# Blog Page
-class BlogTemplateView(TemplateView):
-    template_name = "core/blog-single.html"
-
-class PostOKTemplateView(TemplateView):
-    template_name = "core/post_200_ok.html"
