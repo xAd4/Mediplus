@@ -1,5 +1,6 @@
 <form class="form" method="post" action="">
     {% csrf_token %}
+    <input type="hidden" name="post_id" value="{{ post.id }}">
     <div class="row">
         <div class="col-12">
             <div class="form-group message">

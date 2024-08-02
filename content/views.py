@@ -21,6 +21,11 @@ class BlogTemplateView(ListView):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = request.user
-            comment.save()
-            return redirect('post-200-ok')
+            post_id = request.POST.get('post_id')
+            if post_id:
+                comment.post_id = post_id  # Asigna el post_id del formulario
+                comment.save()
+                return redirect('post-200-ok')
+            else:
+                form.add_error(None, "No se ha proporcionado un ID de post válido.")
         return self.get(request, *args, **kwargs, form=form)
