@@ -14,10 +14,12 @@ class StaffIsRequired(object): # Método de seguridad
     def dispatch(self, request, *args, **kwargs):
         return super(StaffIsRequired, self).dispatch(request, *args, **kwargs)
 
+@method_decorator(staff_member_required, name="dispatch")
 class MedicalAppointmentsListView(ListView):
     model = DepartmentAppointment
     template_name = "appointments/medical_appointments.html"
 
+@method_decorator(staff_member_required, name="dispatch")
 class MedicalAppointmentsDetailView(DetailView):
     model = DepartmentAppointment
     template_name = "appointments/medical_appointments_detail.html"   
@@ -32,10 +34,12 @@ class MedicalAppointmentDeleteView(DeleteView):
 
 # MESSAGES
 
+@method_decorator(staff_member_required, name="dispatch")
 class ContactMessagesListView(ListView):
     model = ContactMessages
     template_name = "appointments/messages.html"
 
+@method_decorator(staff_member_required, name="dispatch")
 class ContactMessagesDetailView(DetailView):
     model = ContactMessages
     template_name = "appointments/messages_detail.html"   
