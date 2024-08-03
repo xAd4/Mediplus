@@ -37,7 +37,7 @@
 									<!-- Meta -->
 									<div class="meta">
 										<div class="meta-left">
-											<span class="author"><a href="#"><img src="{% static 'core/img/author1.jpg' %}" alt="#">{{object.post_published.username}}</a></span>
+											<span class="author"><a href="#"><img src="{% static 'core/img/author1.jpg' %}" alt="#">{{object.user_published.username}}</a></span>
 											<span class="date"><i class="fa fa-clock-o"></i>{{object.created_at}}</span>
 										</div>
 										<div class="meta-right">
@@ -74,49 +74,22 @@
 									<h2>All Comments</h2>
 									<div class="comments-body">
 										<!-- Single Comments -->
+										{% load comment %} {% get_comment_list as comments %}
+										{% for comment in comments %}
 										<div class="single-comments">
 											<div class="main">
 												<div class="head">
 													<img src="{% static 'core/img/author1.jpg' %}" alt="#"/>
 												</div>
 												<div class="body">
-													<h4>Afsana Mimi</h4>
-													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
-													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
+													<h4>{{comment.user_published.username}}</h4>
+													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>{{comment.created_at}}</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
+													<p>{{comment.comment}}</p>
 													<a href="#"><i class="fa fa-reply"></i>replay</a>
 												</div>
 											</div>
 										</div>
-										<!--/ End Single Comments -->
-										<!-- Single Comments -->
-										<div class="single-comments left">
-											<div class="main">
-												<div class="head">
-													<img src=" {% static 'core/img/author2.jpg' %}" alt="#"/>
-												</div>
-												<div class="body">
-													<h4>Naimur Rahman</h4>
-													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
-													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
-													<a href="#"><i class="fa fa-reply"></i>replay</a>
-												</div>
-											</div>
-										</div>
-										<!--/ End Single Comments -->
-										<!-- Single Comments -->
-										<div class="single-comments">
-											<div class="main">
-												<div class="head">
-													<img src="{% static 'core/img/author3.jpg' %}" alt="#"/>
-												</div>
-												<div class="body">
-													<h4>Suriya Molharta</h4>
-													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
-													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
-													<a href="#"><i class="fa fa-reply"></i>replay</a>
-												</div>
-											</div>
-										</div>
+										{% endfor %}
 										<!--/ End Single Comments -->
 									</div>
 								</div>
@@ -125,22 +98,7 @@
 								<div class="comments-form">
 									<h2>Leave Comments</h2>
 									<!-- Contact Form -->
-									<form class="form" method="post" action="mail/mail.php">
-										<div class="row">
-											<div class="col-12">
-												<div class="form-group message">
-													<i class="fa fa-pencil"></i>
-													<textarea name="message" rows="7" placeholder="Type Your Message Here" ></textarea>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="form-group button">	
-													<button type="submit" class="btn primary"><i class="fa fa-send"></i>Submit Comment</button>
-												</div>
-											</div>
-										</div>
-									</form>
-
+									{% load form_comment %} {% show_comment_form %}
 									<!--/ End Contact Form -->
 								</div>
 							</div>
