@@ -8,7 +8,6 @@ class DepartmentAppointmentSerializer(serializers.ModelSerializer):
 
 
 # Serializer List
-
 class DepartmentListSerializer(serializers.ModelSerializer):
     class Meta:
         model = DepartmentList

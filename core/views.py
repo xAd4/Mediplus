@@ -12,14 +12,14 @@ from django.utils.decorators import method_decorator
 class HomeTemplateView(TemplateView):
     template_name = "core/index.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs): # -> This logic allows sent instances-model the model DeppartmentAppointment through that form
         context = super().get_context_data(**kwargs)
         context['form'] = DepartmentAppointmentForm()
         return context
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')  # Redirige al login si el usuario no está autenticado
+            return redirect('login') 
 
         form = DepartmentAppointmentForm(request.POST)
         if form.is_valid():
