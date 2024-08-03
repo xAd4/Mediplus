@@ -19,105 +19,49 @@
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
+		{% include "blog/includes/post_menu.html" %}
 
 		<!-- Single News -->
-		{% for post in object_list %}
-		<section class="news-single section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-12">
-						<div class="row">
-							<div class="col-12">
-								<div class="single-main">
-									<!-- News Head -->
-									<div class="news-head">
-										<img src="{{post.image.url}}" alt="#">
-									</div>
-									<!-- News Title -->
-									<h1 class="news-title"><a href="{% url 'blog-detail' post.id %}">{{post.title}}</a></h1>
-									<!-- Meta -->
-									<div class="meta">
-										<div class="meta-left">
-											<span class="author">{{post.user_published.username}}</span>
-											<span class="date"><i class="fa fa-clock-o"></i>{{post.created_at}}</span>
-										</div>
-										<div class="meta-right">
-											<span class="comments"><a href="#"><i class="fa fa-comments"></i>05 Comments</a></span>
-										</div>
-									</div>
-									<!-- News Text -->
-									<div class="news-text">
-										<p>{{post.content}}</p>
-										<blockquote class="overlay">
-											<p>{{post.article}}</p>
-										</blockquote>
-									</div>
+		<div class="container">
+			<div class="row">
+				{% for post in object_list %}
+				<div class="col-12 col-md-6 col-lg-4">
+					<section class="news-single section">
+						<div class="single-main">
+							<!-- News Head -->
+							<div class="news-head">
+								{% if post.image %}
+									<img src="{{ post.image.url }}" alt="#">
+								{% else %}
+									<img src="{% static 'path/to/default-image.jpg' %}" alt="No image available">
+								{% endif %}
+							</div>
+							<!-- News Title -->
+							<h1 class="news-title"><a href="{% url 'blog-detail' post.id %}">{{ post.title|striptags|safe|truncatechars:"50" }} Read More...</a></h1>
+							<!-- Meta -->
+							<div class="meta">
+								<div class="meta-left">
+									<span class="author">{{ post.user_published.username }}</span>
+									<span class="date"><i class="fa fa-clock-o"></i>{{ post.created_at|date:"SHORT_DATE_FORMAT" }}</span>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-12">
-						<div class="main-sidebar">
-							<!-- Single Widget -->
-							<!--/ End Single Widget -->
-							<!-- Single Widget -->
-							<!--/ End Single Widget -->
-							<!-- Single Widget -->
-							<div class="single-widget recent-post">
-								<h3 class="title">Recent post</h3>
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="{% static 'core/img/blog-sidebar1.jpg' %}" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">We have annnocuced our new product.</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2020</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="{% static 'core/img/blog-sidebar2.jpg' %}" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top five way for solving teeth problems.</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Mar 05, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>59</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="{% static 'core/img/blog-sidebar3.jpg' %}" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">We provide highly business soliutions.</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>June 09, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>44</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
+							<!-- News Text -->
+							<div class="news-text">
+								<p>{{ post.content|striptags|safe|truncatechars:"50"}}</p>
+								<blockquote class="overlay">
+									<p>{{ post.article|striptags|safe|truncatechars:"50"}}</p>
+								</blockquote>
 							</div>
-							<!--/ End Single Widget -->
-							<!-- Single Widget -->
-							<!--/ End Single Widget -->
-							<!-- Single Widget -->
-							<!--/ End Single Widget -->
+							{% if request.user.is_staff %}
+							<button class="btn"><a href="{% url 'blog-update' post.id %}">Edit</a></button>
+							<button class="btn"><a href="{% url 'blog-delete' post.id %}">Delete</a></button>
+							{% endif %}
 						</div>
-					</div>
+					</section>
 				</div>
+				{% endfor %}
 			</div>
-		</section>
-		{% endfor %}
+		</div>
+		
 		<!--/ End Single News -->
 {% endblock content %}

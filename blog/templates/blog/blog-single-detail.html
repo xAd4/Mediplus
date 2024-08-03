@@ -48,22 +48,6 @@
 											<p>{{object.article}}</p>
 										</blockquote>
 									</div>
-									<div class="blog-bottom">
-										<!-- Social Share -->
-										<ul class="social-share">
-											<li class="facebook"><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
-											<li class="twitter"><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
-											<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-											<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-										<!-- Next Prev -->
-										<ul class="prev-next">
-											<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-											<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-										</ul>
-										<!--/ End Next Prev -->
-									</div>
 								</div>
 							</div>
 							<div class="col-12">
@@ -94,7 +78,28 @@
 								<div class="comments-form">
 									<h2>Leave Comments</h2>
 									<!-- Contact Form -->
+									{% if request.user.is_authenticated %} 
 									{% load form_comment %} {% show_comment_form %}
+									{% else %}
+									<section class="error-page section">
+										<div class="container">
+										  <div class="row">
+											<div class="col-lg-10">
+											  <!-- Error Inner -->
+											  <div class="error-inner">
+												  <span
+													>
+													Oop's you can't send comments. You need log in</span
+												  >
+												  <br/>
+												<button type="submit" class="btn mt-2"><a href="{% url 'login' %}">Log In</a></button>
+											  </div>
+											  <!--/ End Error Inner -->
+											</div>
+										  </div>
+										</div>
+									  </section>	
+									{% endif %}
 									<!--/ End Contact Form -->
 								</div>
 							</div>
@@ -107,51 +112,15 @@
 							<!-- Single Widget -->
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
-							<div class="single-widget recent-post">
-								<h3 class="title">Recent post</h3>
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="{% static 'core/img/blog-sidebar1.jpg' %}" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">We have annnocuced our new product.</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2020</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="{% static 'core/img/blog-sidebar2.jpg' %}" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top five way for solving teeth problems.</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Mar 05, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>59</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="{% static 'core/img/blog-sidebar3.jpg' %}" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">We provide highly business soliutions.</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>June 09, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>44</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
+
+							<div class="single-widget side-tags">
+								<h3 class="title">Tags</h3>
+								<ul class="tag">
+									<li><a href="{% url 'home' %}#arrived">Book Appointment</a></li>
+									<li><a href="{% url 'contact' %}">Contact us</a></li>
+								</ul>
 							</div>
+							<!--/ End Single Widget -->
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
 							<!--/ End Single Widget -->
