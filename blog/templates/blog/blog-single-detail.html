@@ -9,9 +9,9 @@
 						<div class="col-12">
 							<h2>Blog</h2>
 							<ul class="bread-list">
-								<li><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'blog' %}">Blog List</a></li>
 								<li><i class="icofont-simple-right"></i></li>
-								<li class="active">Blog</li>
+								<li class="active">Blog Detail</li>
 							</ul>
 						</div>
 					</div>
@@ -37,11 +37,8 @@
 									<!-- Meta -->
 									<div class="meta">
 										<div class="meta-left">
-											<span class="author"><a href="#"><img src="{% static 'core/img/author1.jpg' %}" alt="#">{{object.user_published.username}}</a></span>
-											<span class="date"><i class="fa fa-clock-o"></i>{{object.created_at}}</span>
-										</div>
-										<div class="meta-right">
-											<span class="comments"><a href="#"><i class="fa fa-comments"></i>05 Comments</a></span>
+											<span class="author mt-2"><a href="#">{{object.user_published.username}}</a></span>
+											<span class="date mb-2"><i class="fa fa-clock-o"></i>{{object.created_at}}</span>
 										</div>
 									</div>
 									<!-- News Text -->
@@ -78,14 +75,13 @@
 										{% for comment in comments %}
 										<div class="single-comments">
 											<div class="main">
-												<div class="head">
-													<img src="{% static 'core/img/author1.jpg' %}" alt="#"/>
-												</div>
 												<div class="body">
 													<h4>{{comment.user_published.username}}</h4>
 													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>{{comment.created_at}}</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
 													<p>{{comment.comment}}</p>
-													<a href="#"><i class="fa fa-reply"></i>replay</a>
+													{% if request.user.is_authenticated and comment.user_published == request.user or request.user.is_superuser %}
+													<a href="{% url 'blog-detail-delete' comment.id %}"><i class="fa fa-warning"></i>Delete</a>
+													{% endif %}
 												</div>
 											</div>
 										</div>
