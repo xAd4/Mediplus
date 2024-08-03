@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django import forms
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
@@ -62,12 +63,28 @@ class PostCreateView(CreateView):
         form.instance.user_published = self.request.user
         return super().form_valid(form)
     
+    def get_form(self, form_class = None): 
+        form = super(PostCreateView, self).get_form()
+        form.fields["title"].widget = forms.TextInput(attrs={"class": "form-control mb-2",})
+        form.fields["content"].widget = forms.Textarea(attrs={"class": "form-control mb-2",})
+        form.fields["article"].widget = forms.Textarea(attrs={"class": "form-control mb-2",})
+        form.fields["image"].widget = forms.ClearableFileInput()
+        return form
+    
 @method_decorator(staff_member_required, name="dispatch")
 class PostUpdateView(UpdateView):
     model = Post
     template_name = "forms/default_form_update.html"
     fields = ["title", "content", "image", "article"]
     success_url = reverse_lazy("blog")
+    
+    def get_form(self, form_class = None): 
+        form = super(PostUpdateView, self).get_form()
+        form.fields["title"].widget = forms.TextInput(attrs={"class": "form-control mb-2",})
+        form.fields["content"].widget = forms.Textarea(attrs={"class": "form-control mb-2",})
+        form.fields["article"].widget = forms.Textarea(attrs={"class": "form-control mb-2",})
+        form.fields["image"].widget = forms.ClearableFileInput()
+        return form
     
 
 @method_decorator(staff_member_required, name="dispatch")
