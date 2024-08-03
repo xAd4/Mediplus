@@ -35,3 +35,20 @@ class Post(models.Model):
 def delete_image_on_delete(sender, instance, **kwargs):
     if instance.image:
         instance.image.delete(False)
+        
+# Comment
+
+class Comment(models.Model):
+    user_published = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+        
+    def __str__(self):
+        return f"{self.user_published.username} - {self.post} - {self.comment[:20]}"
+    
