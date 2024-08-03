@@ -11,9 +11,11 @@ class PostListView(ListView):
     template_name = "blog/blog-single.html"
   
 # Blog Page Detail  
+
 class PostDetailView(DetailView):
     model = Post
     template_name = "blog/blog-single-detail.html"
+    context_object_name = 'object'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,19 +23,22 @@ class PostDetailView(DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect('login')
+        post = self.get_object()  # Obtén el objeto del post de manera segura
 
         form = CommentForm(request.POST)
+        
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.post = get_object_or_404(Post, pk=self.kwargs['pk'])
-            comment.user_published = request.user  # Usa el nombre del campo correcto
+            comment.post = post
+            comment.user_published = request.user
             comment.save()
-            return redirect('blog-detail', pk=self.kwargs['pk'])  # Asegúrate de que esta URL sea la correcta
-        return self.get(request, *args, **kwargs, form=form)
+            return redirect('blog-detail', pk=post.pk)  # Redirige para evitar resubmisiones
 
-    
+        context = self.get_context_data()
+        context['form'] = form
+        return self.render_to_response(context)
+
+
 # Comments
 
 # Comment Detail
