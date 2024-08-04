@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 DATABASES = {
  'default': {
  'ENGINE': 'django.db.backends.mysql',
- 'NAME': 'mediplus', # Nombre de tu base de datos
- 'USER': 'angelestarita', # Nombre de usuario de la base de datos
- 'PASSWORD': '3579', # Contraseña del usuario de la base de datos
- 'HOST': 'localhost', # El host donde corre tu base de datos
- 'PORT': '3306', # Puerto de MySQL (por defecto es 3306)
+ 'NAME': 'mediplus', 
+ 'USER': 'angelestarita', 
+ 'PASSWORD': '3579', 
+ 'HOST': 'localhost', 
+ 'PORT': '3306', 
  }
 }
 
